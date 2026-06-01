@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 // ── Serve static files from /public ───────
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // ── Supabase helper ────────────────────────
 const sbHeaders = {
@@ -137,7 +137,7 @@ app.patch('/api/users/update', async (req, res) => {
 
 // ── Fallback → serve index/job.html ───────
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+   res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
 
 // ── Utils ──────────────────────────────────
