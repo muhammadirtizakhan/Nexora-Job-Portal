@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexora - Job Portal</title>
+    <link rel="stylesheet" href="./style.css" />
+<link rel="icon" href="https://nexorahealth.ai/nexora-logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- Background Orbs -->
+<div class="fixed inset-0 overflow-hidden -z-20 pointer-events-none">
+    <div class="absolute rounded-full top-80 left-2/5 -translate-x-1/2 size-130 bg-[#D10A8A] blur-[100px]"></div>
+    <div class="absolute rounded-full top-80 right-0 -translate-x-1/2 size-130 bg-[#2E08CF] blur-[100px]"></div>
+    <div class="absolute rounded-full top-0 left-1/2 -translate-x-1/2 size-130 bg-[#F26A06] blur-[100px]"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 z-50 flex w-full items-center justify-between px-4 py-3.5 md:px-16 lg:px-24 transition-all duration-300" style="background: transparent;">
+    <!-- Logo -->
+    <div class="flex-shrink-0 flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+                <path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/>
+                <path d="M12 2v3M12 17v5"/>
+                <path d="M7 8L5 10"/>
+                <path d="M17 8l2 2"/>
+            </svg>
+        </div>
+        <a href="#" class="nav-link text-xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent tracking-wide" data-page="home">NEXORA</a>
+    </div>
+    
+    <!-- Navigation Links - Center -->
+    <div class="flex items-center justify-center gap-8 lg:gap-12">
+        <a href="#" class="nav-link transition hover:text-gray-300 font-medium" data-page="home">Home</a>
+        <a href="#" class="nav-link transition hover:text-gray-300 font-medium" data-page="jobportal">Job Portal</a>
+        <a href="#" class="nav-link transition hover:text-gray-300 font-medium" id="aboutLink">About</a>
+    </div>
+    <!-- Auth Section - Right side -->
+    <div class="flex-shrink-0 flex items-center gap-3">
+        <!-- Sign Up Button (shown when logged out) -->
+        <div id="authButtonContainer">
+            <a class="btn glass" id="signUpBtn" href="#">Sign Up</a>
+        </div>
+        
+        <!-- Profile Container (shown when logged in) -->
+        <div id="profileContainer" class="profile-dropdown hidden">
+            <div class="avatar" id="avatarBtn">👤</div>
+          <div id="dropdownMenu" class="dropdown-content">
+    <a href="#" id="changeProfileBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: inline; margin-right: 8px;">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M20 21a8 8 0 1 0-16 0"/>
+            <path d="M16 13l1.5 1.5L21 11" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Edit Profile
+    </a>
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 4px 0;">
+    <a href="#" id="logoutBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: inline; margin-right: 8px;">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Logout
+    </a>
+</div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="transition active:scale-90 md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+    </button>
+</nav>
+<div id="mobile-menu">
+    <a href="#" class="nav-link" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="jobportal">Job Portal</a>
+    <a href="#" id="mobileAboutLink">About</a>
+</div>
+<div style="padding-top: 70px;"></div>
+
+<!-- HOME PAGE -->
+<div id="homePage" class="page active-page">
+    <main class="px-4">
+        <section class="flex flex-col items-center">
+            <div class="flex items-center gap-3 mt-16 md:mt-28">
+                <p class="text-gray-100">Your Career Starts Here</p>
+                <button class="btn glass py-1 px-3 text-xs open-job-portal">Browse roles</button>
+            </div>
+            <h1 class="text-center text-4xl/13 md:text-6xl/19 mt-4 font-semibold tracking-tight max-w-3xl">
+                Find Your Role to Kickstart Your journey with
+                <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">Nexora</span>
+            </h1>
+            <div class="text-center max-w-2xl mx-auto mt-6 space-y-2">
+                <p class="text-gray-100 text-base/7">Connect with our team and work on multiple projects</p>
+                <p class="text-gray-100 text-base/7">Kickstart your career with Nexora Job Portal — your gateway to attain the professionalism.</p>
+            </div>
+            <div class="flex justify-center mt-8">
+                <button class="btn glass py-4 px-12 text-lg font-semibold hover:scale-105 transition duration-300 open-job-portal">Find roles</button>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 pt-8 border-t border-white/10">
+                <div class="text-center"><p class="text-2xl md:text-3xl font-bold text-white">3+</p><p class="text-gray-400 text-sm">Active Client Projects</p></div>
+                <div class="text-center"><p class="text-2xl md:text-3xl font-bold text-white">24/7</p><p class="text-gray-400 text-sm">Business Automations</p></div>
+                <div class="text-center"><p class="text-2xl md:text-3xl font-bold text-white">25+</p><p class="text-gray-400 text-sm">AI & Web Projects Developed</p></div>
+            </div>
+        </section>
+
+        <section class="mt-32">
+            <div class="text-center">
+                <h2 class="text-3xl font-semibold max-w-lg mx-auto mt-4 text-white">Why Choose Nexora?</h2>
+                <p class="mt-4 text-center text-sm/7 text-gray-100 max-w-md mx-auto">We help businesses grow with modern websites, AI automation, and smart digital solutions.</p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-6 mt-10 px-6">
+                <div class="hover:-translate-y-0.5 transition duration-300 p-6 rounded-xl space-y-4 glass max-w-80 w-full">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-pink-400"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9"/><path d="M2 16h20"/><path d="M12 16v4"/><path d="M9 20h6"/></svg>
+                    <h3 class="text-base font-medium text-white">Smart Digital Solutions</h3>
+                    <p class="text-gray-100 pb-2">Websites, chatbots & automation for businesses.</p>
+                </div>
+                <div class="hover:-translate-y-0.5 transition duration-300 p-6 rounded-xl space-y-4 glass max-w-80 w-full">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg>
+                    <h3 class="text-base font-medium text-white">Business Growth Support</h3>
+                    <p class="text-gray-100 pb-2">Helping businesses grow with digital solutions.</p>
+                </div>
+                <div class="hover:-translate-y-0.5 transition duration-300 p-6 rounded-xl space-y-4 glass max-w-80 w-full">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                    <h3 class="text-base font-medium text-white">AI-Powered Innovation</h3>
+                    <p class="text-gray-100 pb-2">Smart AI systems for future-ready companies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-32 relative">
+            <div class="text-center">
+                <h2 class="text-3xl font-semibold max-w-lg mx-auto mt-4 text-white">How to Get role in 3 Simple Steps</h2>
+                <p class="mt-4 text-center text-sm/7 text-gray-100 max-w-md mx-auto">Your journey to a new career starts here. Follow these simple steps.</p>
+            </div>
+            <div class="relative space-y-20 md:space-y-30 mt-20">
+                <div class="flex items-center justify-center gap-6 md:gap-20 flex-col md:flex-row">
+                    <img src="/assets/workflow1.png" alt="step" class="flex-1 h-auto w-full max-w-sm rounded-2xl" onerror="this.src='https://placehold.co/400x300/1a1635/white?text=Create+Profile'"/>
+                    <div class="flex-1 flex flex-col gap-6 md:px-6 max-w-md">
+                        <h3 class="text-2xl font-medium text-white">Create Your Profile</h3>
+                        <p class="text-gray-100 text-sm/6 pb-2">Go to nexora official website Sign up and build your Nexora profile and then click on the Find role options it navigate you to the portal where you find your role</p>
+<a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white transition open-job-portal">Learn More →</a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-6 md:gap-20 flex-col md:flex-row-reverse">
+                    <img src="/assets/workflow2.png" alt="step" class="flex-1 h-auto w-full max-w-sm rounded-2xl" onerror="this.src='https://placehold.co/400x300/1a1635/white?text=Apply+to+Jobs'"/>
+                    <div class="flex-1 flex flex-col gap-6 md:px-6 max-w-md">
+                        <h3 class="text-2xl font-medium text-white">Apply to roles</h3>
+                        <p class="text-gray-100 text-sm/6 pb-2">Browse real role listings, filter by your needs, and apply quickly. Upload your CV and apply in seconds.</p>
+                        <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white transition open-job-portal">Learn More →</a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-6 md:gap-20 flex-col md:flex-row">
+                    <img src="/assets/workflow3.png" alt="step" class="flex-1 h-auto w-full max-w-sm rounded-2xl" onerror="this.src='https://placehold.co/400x300/1a1635/white?text=Get+Hired'"/>
+                    <div class="flex-1 flex flex-col gap-6 md:px-6 max-w-md">
+                        <h3 class="text-2xl font-medium text-white">Get Hired</h3>
+                        <p class="text-gray-100 text-sm/6 pb-2">Track your applications and stay connected with startup easily. We review your CV and if you're shortlisted, you'll get updates via email and WhatsApp about your hiring progress.it will be easier as it is widely learning pratices and to earn money</p>
+                        <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white transition open-job-portal">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="meet-team" class="mt-32 flex flex-col items-center">
+            <div class="text-center">
+                <h2 class="text-3xl font-semibold max-w-lg mx-auto mt-4 text-white">Meet Our Team</h2>
+                <p class="mt-4 text-center text-sm/7 text-gray-100 max-w-md mx-auto">The brilliant minds behind Nexora</p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">co founder, CEO ,CTO</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="Hammad" /></div><p class="line-clamp-3 text-sm">The idea behind this startup us that to spread digitalism accross pakistan and start a new era of innovation.</p><p class="text-gray-300 text-sm">Muhmmad irtiza khan</p></div>
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">co-founder, COO</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200" alt="Saad Parvez" /></div><p class="line-clamp-3 text-sm">Inrder to find the jobs or to find internship opportunities in Pakistan during graduation join our team start your journey with us </p><p class="text-gray-300 text-sm">Muhammad Taimoor</p></div>
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">AI Agent Engineer</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60" alt="Ahmad" /></div><p class="line-clamp-3 text-sm">Researched AI agents and automation workflows for scalable business solutions.</p><p class="text-gray-300 text-sm">— Ahmad</p></div>
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">Research Engineer</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=60" alt="Muhammad Isbah" /></div><p class="line-clamp-3 text-sm">exploring the ui and build responsive chatbots library where user comes pay and get the source just integrate the API key chatbot starts to work</p><p class="text-gray-300 text-sm">Hammad</p></div>
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">AI Workflow Engineer</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=60" alt="Engineer" /></div><p class="line-clamp-3 text-sm">Research the new frameworks and implement them for efficient workflow management and help in the entire project journey </p><p class="text-gray-300 text-sm">— Saad Pervaiz</p></div>
+                <div class="w-full max-w-88 space-y-5 rounded-lg glass p-5 transition-all duration-300 hover:-translate-y-1"><div class="flex items-center justify-between"><p class="font-medium text-sm">UI/UX Designer</p><img class="size-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=60" alt="Dua Enam" /></div><p class="line-clamp-3 text-sm">Creating modern, user-friendly UI/UX experiences for digital products.</p><p class="text-gray-300 text-sm">— Dua Enam</p></div>
+            </div>
+        </section>
+
+        <section class="mt-32">
+            <div class="text-center">
+                <h2 class="text-3xl font-semibold max-w-lg mx-auto mt-4 text-white">Frequently Asked Questions</h2>
+                <p class="mt-4 text-center text-sm/7 text-gray-100 max-w-md mx-auto">Got questions? We've got answers. Check out our FAQ section below.</p>
+            </div>
+            <div id="faq-container" class="mx-auto mt-12 space-y-4 w-full max-w-xl"></div>
+        </section>
+
+        <div class="flex flex-col max-w-5xl px-4 mt-40 mx-auto items-center justify-center text-center py-16 rounded-xl glass">
+            <h2 class="text-2xl md:text-4xl font-medium mt-2">Ready to Start Your Journey?</h2>
+            <p class="mt-4 text-sm/7 max-w-md text-gray-300">Join thousands of successful candidates who found their dream jobs through Nexora.</p>
+            <button class="btn glass flex items-center gap-2 mt-8 open-job-portal">
+                Get Started Now
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+    </main>
+</div>
+
+<!-- JOB PORTAL PAGE - UPDATED WITH PROJECT CARDS -->
+<div id="jobPortalPage" class="page">
+    <div class="px-4 max-w-5xl mx-auto pb-24">
+        <section class="text-center mt-8">
+            <p class="text-sm text-gray-400 mb-2 tracking-wide">Explore Opportunities</p>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+                Current <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">Projects</span>
+            </h1>
+            <p class="text-gray-400 mt-3 text-sm max-w-md mx-auto">Browse ongoing projects and apply for available roles.</p>
+        </section>
+
+        <!-- Search -->
+        <section class="mt-8">
+            <div class="nx-search-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><circle cx="10" cy="10" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="portalSearchInput" placeholder="Search by project or role..." class="nx-search-input" autocomplete="off" />
+                <button id="portalSearchBtn" class="nx-search-btn">Search</button>
+            </div>
+        </section>
+
+        <!-- Category Filters (Role Categories from assigned roles) -->
+        <section class="mt-8">
+            <div class="flex flex-wrap gap-3 justify-center" id="portalCategoriesContainer">
+                <button data-category="all" class="nx-cat-chip active">All Projects</button>
+            </div>
+        </section>
+
+   <div class="result-wrapper my-6">
+    <div class="result-count">
+        <span id="portalResultCount">0</span> projects found
+    </div>
+</div>
+
+        <!-- Projects Grid Container -->
+        <div class="jobs-grid" id="portalJobsContainer"></div>
+        <div id="portalNoResults" class="hidden text-center py-20">
+            <p class="text-gray-400 font-medium">No projects found</p>
+            <p class="text-gray-600 text-sm mt-1">Check back later for new opportunities</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="flex flex-col items-center px-4 md:px-16 lg:px-24 justify-center w-full pt-16 mt-20 glass border-0">
+    <h2 class="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">NEXORA</h2>
+    <div class="flex flex-wrap items-center justify-center gap-8 py-8">
+        <a href="#" class="nav-link transition hover:text-gray-300" data-page="home">Home</a>
+        <a href="#" class="nav-link transition hover:text-gray-300" data-page="jobportal">Job Portal</a>
+        <a href="#" class="nav-link transition hover:text-gray-300" id="footerAboutLink">About</a>
+        <a href="#" class="transition hover:text-gray-300">Privacy Policy</a>
+        <a href="#" class="transition hover:text-gray-300">Terms of Service</a>
+    </div>
+    <div class="flex items-center gap-6 pb-6">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/nexora.devx?igsh=MTJ6c2c0eDJxNG82Ng==" target="_blank" class="hover:-translate-y-0.5 text-gray-200 transition-all duration-300">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+        </a>
+        
+        <!-- LinkedIn (暂时没有链接，disabled状态) -->
+        <a href="javascript:void(0)" class="opacity-50 cursor-not-allowed text-gray-200 transition-all duration-300" title="LinkedIn Coming Soon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+            </svg>
+        </a>
+        
+        <!-- GitHub -->
+        <a href="https://github.com/muhammadirtizakhan" target="_blank" class="hover:-translate-y-0.5 text-gray-200 transition-all duration-300">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+        </a>
+    </div>
+    <hr class="w-full border-white/20 mt-6" />
+    <div class="flex flex-col md:flex-row items-center w-full justify-between gap-4 py-4">
+        <p class="text-gray-400 text-sm">Be ready to groom your skills</p>
+        <p class="text-gray-500 text-sm">Copyright © 2026 <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent font-semibold">NEXORA</span>. All rights reserved.</p>
+    </div>
+</footer>
+<!-- PROFILE MODAL -->
+<div id="profileModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 transition-all duration-300">
+    <div id="profileModalInner" class="relative w-full max-w-md mx-4">
+        <div class="nx-modal-glow"></div>
+        <div class="nx-card">
+            <button id="closeProfileModal" class="nx-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+
+            <!-- Tab switcher -->
+            <div class="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/30 mb-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            </div>
+            <div class="nx-brand">Account Settings</div>
+            <div class="nx-brand-sub">Manage your Nexora profile</div>
+
+            <div class="nx-tabs">
+                <div class="nx-tab-pill" id="profileTabPill"></div>
+                <button class="nx-tab-btn nx-active" id="editProfileTab" onclick="nxShowProfileTab('edit')">Edit Profile</button>
+                <button class="nx-tab-btn nx-inactive" id="changePassTab" onclick="nxShowProfileTab('password')">Change Password</button>
+            </div>
+
+            <!-- Edit Profile Form -->
+            <div id="editProfileForm" class="nx-form">
+                <div class="nx-field">
+                    <label class="nx-label">Display Name</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span>
+                        <input type="text" id="profileNameInput" placeholder="Your display name" class="nx-input" />
+                    </div>
+                </div>
+                <button id="saveProfileBtn" class="nx-submit"><span>Save Changes →</span></button>
+            </div>
+
+            <!-- Change Password Form -->
+            <div id="changePasswordForm" class="nx-form nx-hidden">
+                <div class="nx-field">
+                    <label class="nx-label">Current Password</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <input type="password" id="currentPasswordInput" placeholder="Enter current password" class="nx-input" />
+                        <button type="button" class="nx-eye" onclick="nxToggleEye('currentPasswordInput', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                    </div>
+                </div>
+                <div class="nx-field">
+                    <label class="nx-label">New Password</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <input type="password" id="newPasswordInput" placeholder="Min. 6 characters" class="nx-input" />
+                        <button type="button" class="nx-eye" onclick="nxToggleEye('newPasswordInput', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                    </div>
+                </div>
+                <div class="nx-field">
+                    <label class="nx-label">Confirm New Password</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <input type="password" id="confirmPasswordInput" placeholder="Repeat new password" class="nx-input" />
+                        <button type="button" class="nx-eye" onclick="nxToggleEye('confirmPasswordInput', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                    </div>
+                </div>
+                <button id="savePasswordBtn" class="nx-submit"><span>Update Password →</span></button>
+            </div>
+
+            <p id="profileMessage" class="hidden"></p>
+        </div>
+    </div>
+</div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 transition-all duration-300">
+    <div id="authModalInner" class="relative w-full max-w-md mx-4">
+        <div class="nx-modal-glow"></div>
+        <div class="nx-card">
+            <button id="closeModal" class="nx-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            <div class="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/30 mb-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L15 8.5L22 9.5L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.5L9 8.5L12 2Z"/><path d="M12 2v3M12 17v5"/><path d="M7 8L5 10"/><path d="M17 8l2 2"/></svg>
+            </div>
+            <div class="nx-brand">NEXORA</div>
+            <div class="nx-brand-sub">Your gateway to professional success</div>
+            <div class="nx-tabs">
+                <div class="nx-tab-pill" id="nxTabPill"></div>
+                <button class="nx-tab-btn nx-active" id="loginTab">Sign In</button>
+                <button class="nx-tab-btn nx-inactive" id="registerTab">Create Account</button>
+            </div>
+            <div id="loginForm" class="nx-form">
+                <div class="nx-field"><label class="nx-label">Email Address</label><div class="nx-field-wrap"><span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><input type="email" id="loginEmail" placeholder="you@example.com" class="nx-input" autocomplete="email" /></div></div>
+                <div class="nx-field"><label class="nx-label">Password</label><div class="nx-field-wrap"><span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><input type="password" id="loginPassword" placeholder="Enter your password" class="nx-input" autocomplete="current-password" /><button type="button" class="nx-eye" onclick="nxToggleEye('loginPassword', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+                <button id="loginBtn" class="nx-submit"><span>Sign In →</span></button>
+                <div class="nx-divider"><div class="nx-divider-line"></div><span class="nx-divider-text">or</span><div class="nx-divider-line"></div></div>
+                <div class="nx-switch-text">Don't have an account?<button class="nx-switch-link" onclick="nxShowTab('register')">Create one free →</button></div>
+            </div>
+            <div id="registerForm" class="nx-form nx-hidden">
+                <div class="nx-field"><label class="nx-label">Full Name</label><div class="nx-field-wrap"><span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span><input type="text" id="regName" placeholder="Your full name" class="nx-input" autocomplete="name" /></div></div>
+                <div class="nx-field"><label class="nx-label">Email Address</label><div class="nx-field-wrap"><span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><input type="email" id="regEmail" placeholder="you@example.com" class="nx-input" autocomplete="email" /></div></div>
+                <div class="nx-field"><label class="nx-label">Password</label><div class="nx-field-wrap"><span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><input type="password" id="regPassword" placeholder="Min. 8 characters" class="nx-input" autocomplete="new-password" /><button type="button" class="nx-eye" onclick="nxToggleEye('regPassword', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+                <button id="registerBtn" class="nx-submit"><span>Create Account →</span></button>
+                <div class="nx-divider"><div class="nx-divider-line"></div><span class="nx-divider-text">or</span><div class="nx-divider-line"></div></div>
+                <div class="nx-switch-text">Already have an account?<button class="nx-switch-link nx-purple-link" onclick="nxShowTab('login')">Sign in →</button></div>
+            </div>
+            <p id="authMessage" class="hidden"></p>
+        </div>
+    </div>
+</div>
+<!-- APPLY MODAL -->
+<div id="applyModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 transition-all duration-300">
+    <div id="applyModalInner" class="relative w-full max-w-md mx-4">
+        <div class="nx-modal-glow"></div>
+        <div class="nx-card">
+            <button id="closeApplyModal" class="nx-close">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center shadow-lg shadow-purple-500/30 mb-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="nx-brand">Apply for Role</div>
+            <div class="nx-brand-sub" id="applyModalSubtitle">Role · Project</div>
+
+            <div class="nx-form" style="margin-top: 20px;">
+                <div class="nx-field">
+                    <label class="nx-label">Full Name</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span>
+                        <input type="text" id="applyName" placeholder="Your full name" class="nx-input" />
+                    </div>
+                </div>
+                <div class="nx-field">
+                    <label class="nx-label">Email Address</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                        <input type="email" id="applyEmail" placeholder="you@example.com" class="nx-input" />
+                    </div>
+                </div>
+                <div class="nx-field">
+                    <label class="nx-label">Phone Number</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                        <input type="tel" id="applyPhone" placeholder="+92 300 0000000" class="nx-input" />
+                    </div>
+                </div>
+                <div class="nx-field">
+                    <label class="nx-label">CV Link</label>
+                    <div class="nx-field-wrap">
+                        <span class="nx-field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+                        <input type="url" id="applyCvLink" placeholder="Google Drive / Dropbox URL" class="nx-input" />
+                    </div>
+                </div>
+                <p id="applyMessage" class="hidden" style="border-radius:10px;padding:8px 12px;font-size:11px;font-weight:500;margin-top:8px;"></p>
+                <button id="applySubmitBtn" class="nx-submit" style="margin-top:12px;"><span>Submit Application →</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="module" src="/script.js"></script>
+</body>
+</html>
