@@ -52,41 +52,31 @@ app.get('/api/projects', async (req, res) => {
             sbFetch('roles?select=*&order=priority.asc')
         ]);
 
-        // Debug: Check if roles are fetched
-        console.log('Fetched roles count:', roles.length);
-        console.log('First role:', roles[0]);
-
         const rolesByProject = {};
         roles.forEach(role => {
-            // CRITICAL: Convert to string for matching
             const projectId = String(role.project_id);
             if (!rolesByProject[projectId]) rolesByProject[projectId] = [];
             rolesByProject[projectId].push({
-                id:          role.id,
-                role_title:  role.role_title,
-                category:    role.category,
-                description: role.description,
-                skills:      parseSkills(role.skills),
-                priority:    role.priority,
+                id: role.id,
+                role_title: role.role_title || 'Untitled Role',
+                category: role.category || 'General',
+                description: role.description || '',
+                skills: parseSkills(role.skills),
+                priority: role.priority || '',
             });
         });
 
-        console.log('Roles by project keys:', Object.keys(rolesByProject));
-
         const data = projects.map(p => ({
-            id:          p.id,
-            title:       p.title,
-            description: p.description,
-            image:       p.image_url,
-            completion:  p.completion,
-            status:      p.status,
-            purpose:     p.purpose,
-            doc_url:     p.doc_url,
-            // CRITICAL: Convert project id to string
-            roles:       rolesByProject[String(p.id)] || [],
+            id: p.id,
+            title: p.title || 'Untitled Project',
+            description: p.description || '',
+            image: p.image_url || '',
+            completion: p.completion || 0,
+            status: p.status || 'Unpaid',
+            purpose: p.purpose || 'Practice',
+            doc_url: p.doc_url || '#',
+            roles: rolesByProject[String(p.id)] || [],
         }));
-
-        console.log('Project roles count:', data[0]?.roles.length);
 
         res.json({ success: true, data });
     } catch (err) {
