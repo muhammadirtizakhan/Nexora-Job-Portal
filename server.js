@@ -100,28 +100,45 @@ app.get('/api/projects', async (req, res) => {
 app.post('/api/users/sync', async (req, res) => {
     try {
         const { firebase_uid, email, display_name } = req.body;
-        if (!firebase_uid || !email) {
-            return res.status(400).json({ success: false, error: 'Missing firebase_uid or email' });
+        
+        // Better validation
+        if (!email) {
+            return res.status(400).json({ success: false, error: 'Email is required' });
         }
-
-        const existing = await sbFetch(`users?firebase_uid=eq.${firebase_uid}&select=firebase_uid`);
+        
+        // Agar firebase_uid nahi hai toh temporary banao
+        const finalUid = firebase_uid || `temp_${Date.now()}_${Math.random().toString(36)}`;
+        
+        // Check if exists
+        const existing = await sbFetch(`users?email=eq.${email}&select=email`);
+        
         if (existing?.length > 0) {
-            return res.json({ success: true, exists: true });
+            // Update
+            await sbFetch(`users?email=eq.${email}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    firebase_uid: finalUid,
+                    display_name: display_name || email.split('@')[0],
+                    updated_at: new Date().toISOString()
+                })
+            });
+        } else {
+            // Insert
+            await sbFetch('users', {
+                method: 'POST',
+                body: JSON.stringify({
+                    firebase_uid: finalUid,
+                    email: email,
+                    display_name: display_name || email.split('@')[0],
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                })
+            });
         }
-
-        await sbFetch('users', {
-            method:  'POST',
-            headers: { 'Prefer': 'return=minimal' },
-            body:    JSON.stringify({
-                firebase_uid,
-                email,
-                display_name: display_name || email.split('@')[0]
-            })
-        });
-
-        res.json({ success: true, exists: false });
+        
+        res.json({ success: true });
     } catch (err) {
-        console.error('[/api/users/sync]', err.message);
+        console.error('[/api/users/sync] ERROR:', err.message);
         res.status(500).json({ success: false, error: err.message });
     }
 });
