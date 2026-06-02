@@ -32,14 +32,26 @@ const sbHeaders = {
 };
 
 async function sbFetch(path, options = {}) {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    const url = `${SUPABASE_URL}/rest/v1/${path}`;
+    console.log('Fetching:', url);
+    
+    const res = await fetch(url, {
         ...options,
-        headers: { ...sbHeaders, ...(options.headers || {}) }
+        headers: {
+            'apikey': SUPABASE_ANON,
+            'Authorization': `Bearer ${SUPABASE_ANON}`,
+            'Content-Type': 'application/json',
+        }
     });
+    
+    console.log('Response status:', res.status);
+    
     if (!res.ok) {
         const err = await res.text();
+        console.error('Supabase error:', err);
         throw new Error(`Supabase ${res.status}: ${err}`);
     }
+    
     const text = await res.text();
     return text ? JSON.parse(text) : null;
 }
