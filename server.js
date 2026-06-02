@@ -146,7 +146,27 @@ app.patch('/api/users/update', async (req, res) => {
         res.status(500).json({ success: false, error: err.message });
     }
 });
-
+app.get('/api/test', async (req, res) => {
+    try {
+        // Direct Supabase call
+        const SUPABASE_URL = 'https://ztghenmbpfetpvwkafno.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0Z2hlbm1icGZldHB2d2thZm5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5Mjc2MjAsImV4cCI6MjA2MTUwMzYyMH0.3ZJYjsU4w9G_LHGX8fJ1yXp7gDqUcL8B8cP0fQ5nW8Q';
+        
+        const rolesRes = await fetch(`${SUPABASE_URL}/rest/v1/roles?select=*`, {
+            headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+        });
+        const roles = await rolesRes.json();
+        
+        res.json({ 
+            success: true, 
+            rolesCount: roles.length,
+            roles: roles,
+            message: 'If you see roles here, problem is in grouping logic'
+        });
+    } catch (err) {
+        res.json({ success: false, error: err.message });
+    }
+});
 // ── Fallback → serve index/job.html ───────
 app.get('*', (req, res) => {
    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
