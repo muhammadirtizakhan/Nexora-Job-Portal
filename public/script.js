@@ -955,3 +955,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// Auto-refresh background mein (user ko pata nahi chalega)
+setInterval(async () => {
+    try {
+        const res = await fetch('/api/projects');
+        const json = await res.json();
+        if (json.success && JSON.stringify(currentProjects) !== JSON.stringify(json.data)) {
+            currentProjects = json.data;
+            renderPortalJobs();
+            renderCategories();
+        }
+    } catch (e) {}
+}, 15000);
