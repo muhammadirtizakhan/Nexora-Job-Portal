@@ -720,11 +720,19 @@ function renderPortalJobs() {
 async function loadProjectsFromSupabase() {
     showPortalLoading(true);
     try {
-        const res  = await fetch('/api/projects');
+        // Sirf apne API ko call karo, direct Supabase nahi
+        const res = await fetch('/api/projects');
         const json = await res.json();
+        
         if (!json.success) throw new Error(json.error);
+        
         currentProjects = json.data;
-        projectsLoaded  = true;
+        projectsLoaded = true;
+        renderPortalJobs();
+        renderCategories();
+        
+        console.log('Projects loaded:', currentProjects);
+        console.log('First project roles:', currentProjects[0]?.roles);
     } catch (err) {
         console.error('[Nexora] load failed:', err);
         currentProjects = [];
