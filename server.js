@@ -54,8 +54,10 @@ app.get('/api/projects', async (req, res) => {
 
         const rolesByProject = {};
         roles.forEach(role => {
-            if (!rolesByProject[role.project_id]) rolesByProject[role.project_id] = [];
-            rolesByProject[role.project_id].push({
+            // Convert to string to ensure matching
+            const projectId = String(role.project_id);
+            if (!rolesByProject[projectId]) rolesByProject[projectId] = [];
+            rolesByProject[projectId].push({
                 id:          role.id,
                 role_title:  role.role_title  || 'Untitled Role',
                 category:    role.category    || 'General',
@@ -74,7 +76,7 @@ app.get('/api/projects', async (req, res) => {
             status:      p.status      || 'Unpaid',
             purpose:     p.purpose     || 'Practice',
             doc_url:     p.doc_url     || '#',
-            roles:       rolesByProject[p.id] || [],
+            roles:       rolesByProject[String(p.id)] || [],  // Convert p.id to string too
         }));
 
         res.json({ success: true, data });
@@ -83,7 +85,6 @@ app.get('/api/projects', async (req, res) => {
         res.status(500).json({ success: false, error: err.message });
     }
 });
-
 // ── POST /api/users/sync ───────────────────
 app.post('/api/users/sync', async (req, res) => {
     try {
