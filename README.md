@@ -92,7 +92,7 @@ Your application is reviewed by:
 
 <div align="center">
 
-<img src="https://www.nexoraglobal.info/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" alt="Nexora Logo" width="100"/>
+<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Logo" width="100"/>
 
 <br/>
 
