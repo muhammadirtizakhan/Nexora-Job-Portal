@@ -1,14 +1,14 @@
 <div align="center">
 
-# ✨ Nexora Job Portal
+# ✨ Nexora Solvex Job Portal
 
-<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Logo" width="160"/>
+<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Solvex Logo" width="160"/>
 
 <br/>
 
 **We don't just build websites — we build complete digital systems.**
 
-Nexora is a modern AI-focused startup based in Karachi, Pakistan, dedicated to transforming local businesses through scalable digital infrastructures, intelligent chatbot systems, and AI-assisted automation workflows.
+Nexora Solvex is a modern AI-focused startup based in Karachi, Pakistan, dedicated to transforming local businesses through scalable digital infrastructures, intelligent chatbot systems, and AI-assisted automation workflows.
 
 We combine frontend engineering, backend development, AI integrations, dashboard systems, and reusable chatbot components into one practical and scalable ecosystem — designed for businesses that need real solutions, not templates.
 
@@ -25,7 +25,7 @@ We combine frontend engineering, backend development, AI integrations, dashboard
   <a href="https://nexora-job-portal.vercel.app"><img src="https://img.shields.io/badge/Careers-Job_Portal-4f46e5?style=flat-square&logo=github&logoColor=white"/></a>
   <a href="https://www.instagram.com/nexora.devx"><img src="https://img.shields.io/badge/Instagram-nexora.devx-e1306c?style=flat-square&logo=instagram&logoColor=white"/></a>
   <a href="https://wa.me/923151196495"><img src="https://img.shields.io/badge/WhatsApp-+92_315_1196495-25D366?style=flat-square&logo=whatsapp&logoColor=white"/></a>
-  <a href="mailto:nexoradevx@gmail.com"><img src="https://img.shields.io/badge/Email-nexorasolvex@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"/></a>
+  <a href="mailto:nexorasolvex@gmail.com"><img src="https://img.shields.io/badge/Email-nexorasolvex@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"/></a>
 </p>
 
 </div>
@@ -56,7 +56,7 @@ Rather than following unnecessary complexity, we prioritize:
 > *How to join our project team*
 
 ### 🔹 Step 1: Visit Portal
-👉 **[Nexora Job Portal](https://nexora-job-portal.vercel.app)**
+👉 **[Nexora Solvex Job Portal](https://nexora-job-portal.vercel.app)**
 
 ### 🔹 Step 2: Enroll in Role
 Browse roles → Click **"Enroll Now"** → Fill form → Upload CV
@@ -76,7 +76,7 @@ Your application is reviewed by:
 
 | Via | From |
 |-----|------|
-| 📧 **Email** | `nexoradevx@gmail.com` |
+| 📧 **Email** | `nexorasolvex@gmail.com` |
 | 💬 **WhatsApp** | `+92 315 1196495` |
 
 ### 🔹 Step 5: Start Working
@@ -92,11 +92,11 @@ Your application is reviewed by:
 
 <div align="center">
 
-<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Logo" width="100"/>
+<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Solvex Logo" width="100"/>
 
 <br/>
 
-<sub>© 2026 Nexora Technologies · Karachi, Pakistan 🇵🇰</sub>
+<sub>© 2026 Nexora Solvex · Karachi, Pakistan 🇵🇰</sub>
 
 <sub>Building Practical AI-Powered Digital Systems Through Scalable Engineering & Modern Automation</sub>
 
