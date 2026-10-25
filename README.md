@@ -25,7 +25,7 @@ We combine frontend engineering, backend development, AI integrations, dashboard
   <a href="https://nexora-job-portal.vercel.app"><img src="https://img.shields.io/badge/Careers-Job_Portal-4f46e5?style=flat-square&logo=github&logoColor=white"/></a>
   <a href="https://www.instagram.com/nexora.devx"><img src="https://img.shields.io/badge/Instagram-nexora.devx-e1306c?style=flat-square&logo=instagram&logoColor=white"/></a>
   <a href="https://wa.me/923151196495"><img src="https://img.shields.io/badge/WhatsApp-+92_315_1196495-25D366?style=flat-square&logo=whatsapp&logoColor=white"/></a>
-  <a href="mailto:nexoradevx@gmail.com"><img src="https://img.shields.io/badge/Email-nexoradevx@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"/></a>
+  <a href="mailto:nexoradevx@gmail.com"><img src="https://img.shields.io/badge/Email-nexorasolvex@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"/></a>
 </p>
 
 </div>
